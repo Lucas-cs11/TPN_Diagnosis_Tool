@@ -1,0 +1,79 @@
+{
+  "places": ["p1", "p2", "p3", "p4", "p5"],
+  "transitions": [
+    {
+      "name": "t1",
+      "type": "normal",
+      "observable": true,
+      "label": "a",
+      "time_constraint": {
+        "type": "soft",
+        "earliest": 1,
+        "latest": 3
+      }
+    },
+    {
+      "name": "t2",
+      "type": "fault",
+      "observable": false,
+      "label": "epsilon",
+      "time_constraint": {
+        "type": "hard",
+        "earliest": 0,
+        "latest": 2
+      }
+    },
+    {
+      "name": "t3",
+      "type": "normal",
+      "observable": true,
+      "label": "b",
+      "time_constraint": {
+        "type": "soft",
+        "earliest": 2,
+        "latest": 4
+      }
+    },
+    {
+      "name": "t4",
+      "type": "normal",
+      "observable": false,
+      "label": "epsilon",
+      "time_constraint": {
+        "type": "soft",
+        "earliest": 1,
+        "latest": 2
+      }
+    },
+    {
+      "name": "t5",
+      "type": "normal",
+      "observable": true,
+      "label": "c",
+      "time_constraint": {
+        "type": "hard",
+        "earliest": 3,
+        "latest": 5
+      }
+    }
+  ],
+  "arcs": [
+    {"from": "p1", "to": "t1"},
+    {"from": "t1", "to": "p2"},
+    {"from": "p2", "to": "t2"},
+    {"from": "p2", "to": "t4"},
+    {"from": "t2", "to": "p3"},
+    {"from": "t4", "to": "p3"},
+    {"from": "p3", "to": "t3"},
+    {"from": "t3", "to": "p4"},
+    {"from": "p4", "to": "t5"},
+    {"from": "t5", "to": "p5"}
+  ],
+  "initial_marking": {
+    "p1": 1,
+    "p2": 0,
+    "p3": 0,
+    "p4": 0,
+    "p5": 0
+  }
+}
